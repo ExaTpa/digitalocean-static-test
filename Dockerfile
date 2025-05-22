@@ -15,10 +15,13 @@ COPY ./src ./src
 RUN yarn build
 
 
-FROM nginxinc/nginx-unprivileged:1.27-alpine-slim
+# FROM nginxinc/nginx-unprivileged:1.27-alpine-slim
 
-ARG UID=2001
-ARG GID=2001
+# ARG UID=2001
+# ARG GID=2001
 
-COPY --chown=${UID}:${GID} --from=build /app/dist /usr/share/nginx/html/
+# COPY --chown=${UID}:${GID} --from=build /app/dist /usr/share/nginx/html/
 
+FROM alpine
+
+COPY --chown=${UID}:${GID} --from=build /app/dist /app/dist
