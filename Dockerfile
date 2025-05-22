@@ -21,7 +21,3 @@ RUN yarn build
 # ARG GID=2001
 
 # COPY --chown=${UID}:${GID} --from=build /app/dist /usr/share/nginx/html/
-
-FROM alpine
-
-COPY --chown=${UID}:${GID} --from=build /app/dist /app/dist
